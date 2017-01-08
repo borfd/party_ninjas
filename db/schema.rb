@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20170107180938) do
+=======
+ActiveRecord::Schema.define(version: 20170103143405) do
+>>>>>>> 223e588c58d9750a5d1e542aa0dcc9e27fc191df
 
   create_table "events", force: :cascade do |t|
     t.string   "title"
@@ -23,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170107180938) do
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
+<<<<<<< HEAD
   create_table "todos", force: :cascade do |t|
     t.string   "title"
     t.text     "notes"
@@ -30,6 +35,8 @@ ActiveRecord::Schema.define(version: 20170107180938) do
     t.datetime "updated_at", null: false
   end
 
+=======
+>>>>>>> 223e588c58d9750a5d1e542aa0dcc9e27fc191df
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
