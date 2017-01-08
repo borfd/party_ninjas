@@ -9,9 +9,7 @@ RSpec.feature "events" do
 		visit new_event_url
 		expect(page).to have_content("Add a new event")
 		fill_in "Title", with: "test event"
-		select "2017", from: "Year"
-		select "March", from: "Month"
-		select "1", from: "Day"
+		fill_in "Date", with: "01/01/2017"
 		fill_in "Place", with: "Kater Blau"
 		fill_in "Description", with: "Sick party"
 		click_button "Create Event"

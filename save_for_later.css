@@ -1,0 +1,35 @@
+.label{
+	background: white;
+	color: black;
+	font-size: 100%
+}
+
+li{
+	list-style-type: none;
+}
+
+.test{
+	color: red
+}
+
+.submit-button{
+	padding: 10px;
+    border-radius: 10px;
+    margin-left: 45%;
+    background-color: white;
+}
+
+.container{
+	margin-top: 10px
+}
+
+.alert{
+	border: 1px;
+    background-color: #ddf5d7;
+    font-weight: 300;
+}
+
+.debug_dump{
+	margin-top: 40px;
+	background-color: #ddf5d7
+}

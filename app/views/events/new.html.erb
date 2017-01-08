@@ -2,8 +2,8 @@ Add a new event:
 
 <%= semantic_form_for @event do |f| %>
 	<%= f.input :title %>
-	<%= f.input :date %>
+	<%= f.input :date, :as => :date_picker  %>
 	<%= f.input :place %>
 	<%= f.input :description %>
-	<%= f.submit %>
+	<%= f.submit "Create Event", :class => "submit-button" %>
 <% end %>

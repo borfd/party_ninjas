@@ -1,0 +1,20 @@
+Party niggaz ideas
+
+Users can log in to the site
+Users can suggest other people to be allowed into the site
+Other users can be allowed in to the site, but only once everyone else has agreed - until then, they don't get an invitation. Once everyone has agreed, they get an email notification to log in
+As a user, I want everything on the Party Niggaz network to be easily transferrable to and from facebook, so I don't always have to log in to check events etc
+As a user, I want to be able to check all the music shared bu other users, and check which party they were from if/when relevant
+As a user, I want to be able to create events: trips, parties, sporting activities lol... these events should also be postable on facebook if I want
+As a user, I want to be able to organise whip arounds for money for events, gifts, and such
+As a user, I want to be see the destination to parties and events using the google maps API
+Users can chat in a global chat, and filter by relevant messages: so if I'm talking about an event, I can easily tag it so it's filterable. If I'm just talking shit, I don't tag it
+Users can access a calendar easily, to see all events
+Note: I think the chat feature would bring the coolest added value?
+Also separate tabs for music, pictures, etc
+As a user, I want to see a much more beautiful picture catalog than facebook has to offer - but with the same tagging system, etc
+
+Possible challenges
+
+I don't know what Boris' idea actually is/was, maybe I'm on the wrong page
+Most of this stuff is available on FB - how do we make something that offers stuff FB doesn't have?
