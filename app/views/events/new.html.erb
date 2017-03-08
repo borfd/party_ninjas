@@ -1,9 +1,25 @@
-Add a new event:
+<div class="row" id="content">
+    <div class="medium-3 columns">
 
-<%= semantic_form_for @event do |f| %>
-	<%= f.input :title %>
-	<%= f.input :date %>
-	<%= f.input :place %>
-	<%= f.input :description %>
-	<%= f.submit %>
-<% end %>
+    </div>
+    <div class="medium-6 columns">
+      Add a new event:
+
+      <%= semantic_form_for @event do |f| %>
+      	<%= f.input :title %>
+        <div class="row" id="content">
+          <div class="medium-6 columns">
+          	<%= f.input :date %>
+          </div>
+          <div class="medium-6 columns">
+            <%= f.input :place %>
+          </div>
+        </div>
+
+      	<%= f.input :description %>
+      	<%= f.submit class: "hollow button success" %>
+      <% end %>
+    </div>
+    <div class="medium-3 columns">
+    </div>
+</div>
