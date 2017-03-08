@@ -1,9 +1,10 @@
 class EventsController < ApplicationController
+	# before_action :authenticate_user!
 	def new
 		@event = Event.new
 	end
 
-	def create 
+	def create
 		@event = Event.create!(event_params.merge(user: User.first))
 		redirect_to event_path(@event), flash: {notice:"Your event has been added"}
 	end
@@ -12,8 +13,14 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:id])
 	end
 
-	def index 
+	def index
 		@events = Event.all
+	end
+
+	def attend
+		@event = Event.find(params[:event_id])
+		current_user.attend(@event)
+		redirect_to @event
 	end
 
 	private

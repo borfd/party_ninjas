@@ -19,7 +19,7 @@ RSpec.feature "events" do
 		expect(page).to have_content("Kater Blau")
 	end
 
-	scenario "I want to see all event attributes" do		
+	scenario "I want to see all event attributes" do
 		visit event_url(event)
 		expect(page).to have_content("Something")
 		expect(page).to have_content("somewhere")
@@ -30,8 +30,23 @@ RSpec.feature "events" do
 	scenario "I want to see a list of all events" do
 		visit events_path
 		expect(page).to have_content("Something")
-		expect(page).to have_content("Something else")
+		expect(page).to have_content("somewhere else")
+		expect(page).to have_content(Date.today)
+		expect(page).to have_content(user.email)
 		click_link "Something"
 		expect(page).to have_content("somewhere")
-	end	
+	end
+
+	scenario 'I want to see my name in events that I am attending' do
+		visit root_url
+		click_link "Login"
+		fill_in "Email", with: "something@example.com"
+		fill_in "Password", with: "something"
+		click_button "Log in"
+	  visit event_path(second_event.id)
+	  expect(page).to have_content("Attendees")
+	  click_link "Attend"
+	  expect(page).to have_content(user.email)
+
+	end
 end

@@ -2,5 +2,11 @@
 <%= @event.place %>
 <%= @event.title %>
 <%= @event.date %>
+Attendees:
+<% @event.users.each do |user| %>
+<%= user.email %>
+<% end %>
+<%= link_to "Attend", event_attend_path(@event.id) %>
+
 
 <%= debug params %>
