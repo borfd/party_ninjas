@@ -14,12 +14,14 @@
   </div>
   <div class="top-bar-right">
     <ul class="menu">
-      <li><input type="search" placeholder="Search"></li>
-      <li><button type="button" class="button">Search</button></li>
+      <!-- <li><input type="search" placeholder="Search"></li> -->
+      <!-- <li><button type="button" class="button">Search</button></li> -->
       <% if user_signed_in? %>
-        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <li class="menu-text"><%= link_to "Add Event", new_event_path, class: 'button hollow success' %></li>
+
+        <li class="menu-text"><%= link_to "Logout", destroy_user_session_path, method: :delete, class: "button hollow" %></li>
       <% else %>
-        <li><%= link_to "Login", new_user_session_path %>
+        <li><%= link_to "Login", new_user_session_path, class: 'button hollow success' %>
       <% end %>
     </ul>
   </div>

@@ -24,7 +24,11 @@
       <%= @event.date %>
     </div>
     <br />
-    <%= link_to "Attend", event_attend_path(@event.id), class: "button hollow success" %>
+    <% if current_user.can_attend?(@event) %>
+      <%= link_to "Attend", event_attend_path(@event.id), class: "button hollow success" %>
+    <% else %>
+      <span class="success label">Attending</span>
+    <% end %>
 
   </div>
 

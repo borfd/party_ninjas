@@ -9,4 +9,8 @@ class User < ApplicationRecord
   def attend(event)
     event.users << self
   end
+
+  def can_attend?(event)
+    !events.include?(event)
+  end
 end

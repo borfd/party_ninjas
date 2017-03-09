@@ -5,10 +5,20 @@ RSpec.feature "events" do
 	let!(:event) { Event.create(title: "Something", place: "somewhere", date: Date.today, user:user) }
 	let!(:second_event) { Event.create(title: "kater", place: "somewhere else", date: Date.today, user:user) }
 
+	before { login }
+
+	def login
+		visit root_url
+		click_link "Login"
+		fill_in "Email", with: "something@example.com"
+		fill_in "Password", with: "something"
+		click_button "Log in"
+	end
+
 	scenario "I want to be able to add a new event" do
 		visit events_path
 		click_link "Add Event"
-		expect(page).to have_content("Add a new event")
+		expect(page).to have_content("Add Event")
 		fill_in "Title", with: "test event"
 		select "2017", from: "Year"
 		select "March", from: "Month"
@@ -40,11 +50,6 @@ RSpec.feature "events" do
 
 
 	scenario 'I want to see my name in events that I am attending' do
-		visit root_url
-		click_link "Login"
-		fill_in "Email", with: "something@example.com"
-		fill_in "Password", with: "something"
-		click_button "Log in"
 	  visit event_path(second_event.id)
 	  expect(page).to have_content("Attendees")
 	  click_link "Attend"
