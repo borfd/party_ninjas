@@ -6,8 +6,13 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		@event = Event.create!(event_params.merge(user: User.first))
-		redirect_to event_path(@event), flash: {notice:"Your event has been added"}
+		@event = Event.new(event_params.merge(user: current_user))
+		if @event.valid?
+			@event.save!
+			redirect_to event_path(@event), flash: {notice:"Your event has been added"}
+		else
+			render :new
+		end
 	end
 
 	def show
