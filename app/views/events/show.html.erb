@@ -1,12 +1,15 @@
-
+<div class="row">
+<h3>
+  <%= @event.title %>
+</h3>
 <%= @event.place %>
-<%= @event.title %>
 <%= @event.date %>
-Attendees:
-<% @event.users.each do |user| %>
-<%= user.email %>
-<% end %>
-<%= link_to "Attend", event_attend_path(@event.id) %>
+</div>
 
-
-<%= debug params %>
+<div class="row">
+  <h4>Attendees:</h4>
+  <% @event.users.each do |user| %>
+  <%= user.email %>
+  <% end %>
+  <%= link_to "Attend", event_attend_path(@event.id) %>
+</div>
