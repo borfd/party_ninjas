@@ -1,15 +1,40 @@
 <div class="row">
-<h3>
-  <%= @event.title %>
-</h3>
-<%= @event.place %>
-<%= @event.date %>
-</div>
+  <div class="medium-4 columns">
+    <div class="sidebar">
+      <nav>
+        <ul class="side-nav">
+          <li class="heading">
+            <%= link_to "Events", events_path %>
+          </li>
+          <% Event.all.each do |event| %>
+            <li>
+              <%= link_to event.title, event_path(event.id) %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="medium-4 columns">
+    <div class="panel event">
+      <h3>
+        <%= @event.title %>
+      </h3>
+      <%= @event.place %>
+      <%= @event.date %>
+    </div>
+    <br />
+    <%= link_to "Attend", event_attend_path(@event.id), class: "button hollow success" %>
 
-<div class="row">
-  <h4>Attendees:</h4>
-  <% @event.users.each do |user| %>
-  <%= user.email %>
-  <% end %>
-  <%= link_to "Attend", event_attend_path(@event.id) %>
+  </div>
+
+  <div class="medium-4 columns">
+    <h4>Attendees:</h4>
+    <ul>
+    <% @event.users.each do |user| %>
+      <li><%= user.email %></li>
+    <% end %>
+    </ul>
+    <br />
+  </div>
 </div>

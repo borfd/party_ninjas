@@ -1,3 +1,15 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.sidebar {
+  background: #FAFAFA;
+  padding: 32px 20px;
+}
+.side-nav {
+    display: block;
+    font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !important;
+    list-style-position: outside;
+    list-style-type: none;
+    margin: 0;
+    padding: 0.77778rem 0;
+}
