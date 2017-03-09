@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="medium-12 columns">
+  <div class="medium-10 columns">
     <% @events.each do |event| %>
       <div class="medium-3 columns">
       	<%= link_to event.title, event %>
@@ -14,5 +14,10 @@
         <%= event.user.email %>
       </div>
     <% end %>
+  </div>
+  <div class="medium-2 columns">
+    <div class="clearfix">
+      <%= link_to "Add Event", new_event_path, class: 'button hollow success right' %>
+    </div>
   </div>
 </div>

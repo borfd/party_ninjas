@@ -3,10 +3,11 @@ require "rails_helper"
 RSpec.feature "events" do
 	let!(:user) { User.create!(email: "something@example.com", password: "something") }
 	let!(:event) { Event.create(title: "Something", place: "somewhere", date: Date.today, user:user) }
-	let!(:second_event) { Event.create(title: "Something else", place: "somewhere else", date: Date.today, user:user) }
+	let!(:second_event) { Event.create(title: "kater", place: "somewhere else", date: Date.today, user:user) }
 
 	scenario "I want to be able to add a new event" do
-		visit new_event_url
+		visit events_path
+		click_link "Add Event"
 		expect(page).to have_content("Add a new event")
 		fill_in "Title", with: "test event"
 		select "2017", from: "Year"
@@ -33,9 +34,10 @@ RSpec.feature "events" do
 		expect(page).to have_content("somewhere else")
 		expect(page).to have_content(Date.today)
 		expect(page).to have_content(user.email)
-		click_link "Something"
-		expect(page).to have_content("somewhere")
+		# click_link "kater"
+		expect(page).to have_content("somewhere else")
 	end
+
 
 	scenario 'I want to see my name in events that I am attending' do
 		visit root_url
