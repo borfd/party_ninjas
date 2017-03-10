@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'home/index'
   resources :events do
     get :attend
+    resources :comments
   end
 
   devise_for :users
