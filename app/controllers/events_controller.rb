@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 	before_action :authenticate_user!
+	before_action :set_event, only: [:show, :edit, :update]
 
 	def new
 		@event = Event.new
@@ -16,12 +17,20 @@ class EventsController < ApplicationController
 	end
 
 	def show
-		@event = Event.find(params[:id])
 		@comment = Comment.new
 	end
 
 	def index
 		@events = Event.all
+	end
+
+	def edit
+
+	end
+
+	def update
+		@event.update_attributes(event_params)
+		redirect_to @event
 	end
 
 	def attend
@@ -33,5 +42,9 @@ class EventsController < ApplicationController
 	private
 	def event_params
 		params.require(:event).permit(:title, :date, :description, :user, :place)
+	end
+
+	def set_event
+		@event = Event.find(params[:id])
 	end
 end
