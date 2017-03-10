@@ -20,9 +20,7 @@ RSpec.feature "events" do
 		click_link "Add Event"
 		expect(page).to have_content("Add Event")
 		fill_in "Title", with: "test event"
-		select "2017", from: "Year"
-		select "March", from: "Month"
-		select "1", from: "Day"
+		fill_in "Date", with: "2017/06/06"
 		fill_in "Place", with: "Kater Blau"
 		fill_in "Description", with: "Sick party"
 		click_button "Create Event"
