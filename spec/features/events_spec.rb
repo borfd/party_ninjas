@@ -39,7 +39,7 @@ RSpec.feature "events" do
 		visit events_path
 		expect(page).to have_content("Something")
 		expect(page).to have_content("somewhere else")
-		expect(page).to have_content(Date.today)
+		expect(page).to have_content(Date.today.strftime("%a, %B %d %Y"))
 		expect(page).to have_content(user.name)
 		# click_link "kater"
 		expect(page).to have_content("somewhere else")
