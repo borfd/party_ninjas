@@ -1,9 +1,19 @@
 <div class="row" id="content">
-    <div class="medium-3 columns">
+  <section class="content">
+    <div class="medium-4 columns">
+      <%= render 'sidebar' %>
 
     </div>
     <div class="medium-6 columns">
-      Add a new event:
+      <h3>Add a new event:</h3>
+      <% if @event.errors.any? %>
+        <% @event.errors.full_messages.each do |msg| %>
+        <div class="callout">
+
+          <p><%= msg %></p>
+        </div>
+        <% end %>
+      <% end %>
 
       <%= form_for @event do |f| %>
         <%= f.label :title do %>Title:
@@ -29,4 +39,5 @@
     </div>
     <div class="medium-3 columns">
     </div>
+  </section>
 </div>

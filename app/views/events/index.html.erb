@@ -1,17 +1,19 @@
 <div class="row">
   <div class="medium-10 columns">
     <% @events.each do |event| %>
-      <div class="medium-3 columns">
-      	<%= link_to event.title, event %>
-      </div>
-      <div class="medium-3 columns">
-        <%= event.place %>
-      </div>
-      <div class="medium-3 columns">
-        <%= event.date %>
-      </div>
-      <div class="medium-3 columns">
-        <%= event.user.email %>
+      <div class="row">
+        <div class="medium-3 columns">
+        	<%= link_to event.title, event %>
+        </div>
+        <div class="medium-3 columns">
+          <%= event.place %>
+        </div>
+        <div class="medium-3 columns">
+          <%= event.date %>
+        </div>
+        <div class="medium-3 columns">
+          <%= event.user.name %>
+        </div>
       </div>
     <% end %>
   </div>

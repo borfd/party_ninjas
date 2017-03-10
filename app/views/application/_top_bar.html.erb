@@ -5,14 +5,20 @@
       <li>
       <%= link_to "Events", events_path %>
         <ul class="menu vertical">
+          <li class="hide-for-medium menu-text"><%= link_to "Add Event", new_event_path %></li>
           <% Event.last(3).each do |event| %>
             <li><%= link_to event.title, event_path(event.id) %></li>
           <% end %>
         </ul>
       </li>
+      <% if user_signed_in? %>
+        <li class="hide-for-medium"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li class="hide-for-medium"><%= link_to "Login", new_user_session_path %>
+      <% end %>
     </ul>
   </div>
-  <div class="top-bar-right">
+  <div class="top-bar-right show-for-medium">
     <ul class="menu">
       <!-- <li><input type="search" placeholder="Search"></li> -->
       <!-- <li><button type="button" class="button">Search</button></li> -->
