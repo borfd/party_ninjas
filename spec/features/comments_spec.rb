@@ -7,7 +7,6 @@ RSpec.describe "comments for events" do
 
   def login
     visit root_url
-    click_link "Login"
     fill_in "Email", with: "something@example.com"
     fill_in "Password", with: "something"
     click_button "Log in"

@@ -9,6 +9,10 @@
       </h3>
       <%= @event.place %>
       <%= @event.date %>
+      <p>
+        <%= raw auto_html_for @event.description %>
+      </p>
+      <span class="secondary label">by <%= @event.user.name %> on <%= @event.created_at %>
     </div>
     <br />
     <% if current_user.can_attend?(@event) %>
@@ -19,7 +23,7 @@
 
     <% @event.comments.each do |comment| %>
         <div class="panel">
-          <p><%= comment.comment %></p>
+          <p><%= raw auto_html_for comment.comment %><span class="secondary label">by <%= comment.user.name %> on <%= comment.created_at %></span></p>
         </div>
     <% end %>
 
@@ -33,7 +37,7 @@
   </div>
 
   <div class="medium-3 columns">
-    <h6>Attending:</h6>
+    <h6>Attending: <span class="success badge"><%= @event.users.size %></span></h6>
     <ul>
     <% @event.users.each do |user| %>
       <li><%= user.name %></li>

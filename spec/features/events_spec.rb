@@ -9,15 +9,14 @@ RSpec.feature "events" do
 
 	def login
 		visit root_url
-		click_link "Login"
+		# first("Log in").click
 		fill_in "Email", with: "something@example.com"
 		fill_in "Password", with: "something"
 		click_button "Log in"
 	end
 
 	scenario "I want to be able to add a new event" do
-		visit events_path
-		click_link "Add Event"
+		visit new_event_path
 		expect(page).to have_content("Add Event")
 		fill_in "Title", with: "test event"
 		fill_in "Date", with: "2017/06/06"
@@ -41,7 +40,7 @@ RSpec.feature "events" do
 		expect(page).to have_content("Something")
 		expect(page).to have_content("somewhere else")
 		expect(page).to have_content(Date.today)
-		expect(page).to have_content(user.email)
+		expect(page).to have_content(user.name)
 		# click_link "kater"
 		expect(page).to have_content("somewhere else")
 	end
@@ -49,7 +48,7 @@ RSpec.feature "events" do
 
 	scenario 'I want to see my name in events that I am attending' do
 	  visit event_path(second_event.id)
-	  expect(page).to have_content("Attendees")
+	  expect(page).to have_content("Attending")
 	  click_link "Attend"
 	  expect(page).to have_content(user.name)
 

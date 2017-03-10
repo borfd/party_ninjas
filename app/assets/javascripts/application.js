@@ -19,5 +19,8 @@
 
 $(function(){
     $(document).foundation();
-    $(".fdatepicker").fdatepicker()
+    $(".fdatepicker").fdatepicker({
+      format: "yyyy-mm-dd"
+
+    });
 });

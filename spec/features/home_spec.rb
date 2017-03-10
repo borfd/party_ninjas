@@ -8,7 +8,7 @@ RSpec.feature "landing page" do
 
   scenario "i want to register with name" do
     visit root_url
-    click_link "Login"
+    # click_link "Login"
     click_link "Sign up"
     fill_in "Name", with: "boris"
     fill_in "Email", with: "boris@partyniggaz.com"
