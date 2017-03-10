@@ -1,7 +1,7 @@
-require 'spec_helper'
+require 'rails_helper'
 
 RSpec.describe User do
-  subject { User.create(email: "boris@gmail.com", password: 'yeahbro') }
+  subject { User.create!(name: "boris", email: "boris@gmail.com", password: 'yeahbro') }
   let(:event) { Event.create!(place: 'Sisy', date: Date.today, user: subject, title: "opening") }
 
   it "has can_attend? method" do
@@ -15,5 +15,10 @@ RSpec.describe User do
     subject.save
     subject.reload
     expect(subject.name).to eq("Boris")
+  end
+
+  it "validates presence" do
+    subject.name = ""
+    expect(subject).to_not be_valid
   end
 end

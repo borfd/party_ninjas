@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe UserEvent, type: :model do
-  let!(:iva) { User.create!(email: "something@example.com", password: "something") }
-  let!(:boris) { User.create!(email: "something2@example.com", password: "something") }
+  let!(:iva) { User.create!(name: "boris", email: "something@example.com", password: "something") }
+  let!(:boris) { User.create!(name: "iva", email: "something2@example.com", password: "something") }
   let(:user) { iva }
   let(:event) { klubnacht }
 

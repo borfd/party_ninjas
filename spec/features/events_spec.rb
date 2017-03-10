@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "events" do
-	let!(:user) { User.create!(email: "something@example.com", password: "something") }
+	let!(:user) { User.create!(name: "boris", email: "something@example.com", password: "something") }
 	let!(:event) { Event.create(title: "Something", place: "somewhere", date: Date.today, user:user) }
 	let!(:second_event) { Event.create(title: "kater", place: "somewhere else", date: Date.today, user:user) }
 
@@ -53,7 +53,7 @@ RSpec.feature "events" do
 	  visit event_path(second_event.id)
 	  expect(page).to have_content("Attendees")
 	  click_link "Attend"
-	  expect(page).to have_content(user.email)
+	  expect(page).to have_content(user.name)
 
 	end
 end
