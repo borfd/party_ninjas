@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_event, only: [:show, :edit, :update]
+	before_action :set_event, only: [:show, :edit, :update, :destroy]
 
 	def new
 		@event = Event.new
@@ -37,6 +37,13 @@ class EventsController < ApplicationController
 		@event = Event.find(params[:event_id])
 		current_user.attend(@event)
 		redirect_to @event
+	end
+
+	def destroy
+		if current_user == @event.user
+			@event.destroy
+		end
+		redirect_to events_path
 	end
 
 	private
