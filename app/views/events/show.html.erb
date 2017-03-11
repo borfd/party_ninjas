@@ -34,7 +34,7 @@
   </div>
 
   <div class="medium-3 columns">
-    <div class="callout panel">
+    <div class=" panel">
       <% if current_user.can_attend?(@event) %>
           <%= link_to "Attend", event_attend_path(@event.id), class: "button hollow success" %>
       <% end %>
