@@ -2,6 +2,8 @@ class EventsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_event, only: [:show, :edit, :update, :destroy]
 
+	add_breadcrumb 'Events', 'events_path'
+
 	def new
 		@event = Event.new
 	end
@@ -18,6 +20,7 @@ class EventsController < ApplicationController
 
 	def show
 		@comment = Comment.new
+		add_breadcrumb @event.title, event_path(@event)
 	end
 
 	def index
@@ -25,7 +28,8 @@ class EventsController < ApplicationController
 	end
 
 	def edit
-
+		add_breadcrumb @event.title, event_path(@event)
+		add_breadcrumb "Edit", edit_event_path(@event)
 	end
 
 	def update
@@ -48,6 +52,7 @@ class EventsController < ApplicationController
 
 	def filter
 		@events = EventCalendarService.new.filter(params[:filter])
+		add_breadcrumb "#{params[:filter]}", filter_events_path(params[:filter])
 		render :index
 	end
 
