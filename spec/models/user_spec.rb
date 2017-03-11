@@ -21,4 +21,18 @@ RSpec.describe User do
     subject.name = ""
     expect(subject).to_not be_valid
   end
+
+  it "has admin flag" do
+    expect(subject).to_not be_admin
+    subject.admin = true
+    expect(subject).to be_admin
+  end
+
+  it "has can_edit?" do
+    expect(subject.can_edit?(event)).to be true
+    event.user = User.create!(name: "not boris", email: "notboris@gmail.com", password: "yeahbro")
+    expect(subject.can_edit?(event)).to_not be true
+    subject.admin = true
+    expect(subject.can_edit?(event)).to be true
+  end
 end

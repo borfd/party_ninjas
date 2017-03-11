@@ -15,4 +15,8 @@ class User < ApplicationRecord
   def can_attend?(event)
     !events.include?(event)
   end
+
+  def can_edit?(event)
+    admin? || event.user == self
+  end
 end

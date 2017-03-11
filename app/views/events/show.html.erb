@@ -44,7 +44,7 @@
   <div class="medium-3 columns">
     <div class="text-center panel">
 
-      <% if current_user == @event.user %>
+      <% if current_user.can_edit?(@event) %>
         <%= link_to "Edit", edit_event_path(@event), class: "button hollow" %>
         <%= link_to 'Destroy', event_path(@event),
                       method: :delete, data: { confirm: 'Are you sure?' }, class: "alert button hollow" %>
