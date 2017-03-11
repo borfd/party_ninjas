@@ -6,9 +6,9 @@
       <%= link_to "Events", events_path %>
         <ul class="menu vertical">
           <li class="hide-for-medium menu-text"><%= link_to "Add Event", new_event_path %></li>
-          <% Event.all.each do |event| %>
-            <li><%= link_to event.title, event_path(event.id) %></li>
-          <% end %>
+          <li><%= link_to "Today", filter_events_path(:today) %></li>
+          <li><%= link_to "Tomorrow", filter_events_path(:tomorrow) %></li>
+          <li><%= link_to "This Week", filter_events_path(:this_week) %></li>
         </ul>
       </li>
       <% if user_signed_in? %>

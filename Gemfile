@@ -33,8 +33,6 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'devise'
-gem 'rspec-rails'
-gem 'capybara'
 gem 'formtastic'
 gem 'auto_html'
 
@@ -43,6 +41,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'capybara'
 end
 
 group :development do

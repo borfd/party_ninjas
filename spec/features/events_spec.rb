@@ -3,7 +3,8 @@ require "rails_helper"
 RSpec.feature "events" do
 	let!(:user) { User.create!(name: "boris", email: "something@example.com", password: "something") }
 	let!(:event) { Event.create(title: "Something", place: "somewhere", date: Date.today, user:user) }
-	let!(:second_event) { Event.create(title: "kater", place: "somewhere else", date: Date.today, user:user) }
+	let!(:second_event) { Event.create(title: "kater", place: "kater", date: Date.tomorrow, user:user) }
+	let!(:third_event) { Event.create(title: "in 20 days", place: "keller", date: 20.days.from_now, user:user) }
 
 	before { login }
 
@@ -43,11 +44,11 @@ RSpec.feature "events" do
 	scenario "I want to see a list of all events" do
 		visit events_path
 		expect(page).to have_content("Something")
-		expect(page).to have_content("somewhere else")
+		expect(page).to have_content("kater")
 		expect(page).to have_content(Date.today.strftime("%a, %B %d %Y"))
 		expect(page).to have_content(user.name)
 		# click_link "kater"
-		expect(page).to have_content("somewhere else")
+		expect(page).to have_content("kater")
 	end
 
 
@@ -56,6 +57,20 @@ RSpec.feature "events" do
 	  expect(page).to have_content("Attending")
 	  click_link "Attend"
 	  expect(page).to have_content(user.name)
+	end
 
+	scenario "I want to see todays events" do
+		visit events_path
+		click_link "Today"
+		expect(page).to have_content("Something")
+		expect(page).to_not have_content("Kater")
+	end
+
+	scenario "I want to see this weeks events" do
+		visit events_path
+		click_link "This Week"
+		expect(page).to have_content("Something")
+		expect(page).to have_content("kater")
+		expect(page).to_not have_content("keller")
 	end
 end

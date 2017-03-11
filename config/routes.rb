@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   resources :events do
     get :attend
     resources :comments
+    collection do
+      get 'filter/:filter' => :filter, as: :filter
+    end
   end
 
   devise_for :users

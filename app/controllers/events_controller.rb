@@ -46,6 +46,11 @@ class EventsController < ApplicationController
 		redirect_to events_path
 	end
 
+	def filter
+		@events = EventCalendarService.new.filter(params[:filter])
+		render :index
+	end
+
 	private
 	def event_params
 		params.require(:event).permit(:title, :date, :description, :user, :place)
