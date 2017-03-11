@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
 
+  mount_uploader :avatar, AvatarUploader
+
   def attend(event)
     event.users << self
   end

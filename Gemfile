@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'formtastic'
 gem 'auto_html'
+gem 'fog'
+gem "mini_magick"
 gem 'carrierwave', '~> 1.0'
 
 group :development, :test do
