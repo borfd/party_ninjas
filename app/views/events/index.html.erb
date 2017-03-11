@@ -1,11 +1,17 @@
 
 <div class="row">
-  <div class="medium-7 columns small-centered">
+  <div class="medium-3 columns show-for-medium">
+    <%= render 'sidebar' %>
+  </div>
+  <div class="medium-7 columns">
 
     <% @events.each do |event| %>
       <div>
         <h3><%= link_to event.title, event %></h3>
-        <p><%= raw(auto_html_for(truncate(event.description, length: 200))) %></p>
+        <p>
+          <%= raw(auto_html_for(truncate(event.description, length: 200))) %>
+          <%= link_to "read more", event %>
+        </p>
         <div class="callout">
           <ul class="menu simple">
             <li><%= event.date.strftime("%a, %B %d %Y") %></li>
