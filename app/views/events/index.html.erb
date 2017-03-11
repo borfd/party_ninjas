@@ -10,8 +10,23 @@
           <ul class="menu simple">
             <li><%= event.date.strftime("%a, %B %d %Y") %></li>
             <li><%= event.place %></li>
-            <li><%= link_to "Added by: #{event.user.name}", event_path(event) %></li>
-            <li><%= link_to "Comments #{event.comments.size}", event_path(event) %></li>
+            <br />
+            <li>
+              <%= link_to event_path(event) do %>
+                Added by: <%= event.user.name %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to event_path(event) do %>
+                Attending: <span class="success badge"><%= event.users.size %></span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to event_path(event) do %>
+                Comments: <span class="secondary badge"><%= event.comments.size %></span>
+              <% end %>
+            </li>
+
           </ul>
         </div>
       </div>
