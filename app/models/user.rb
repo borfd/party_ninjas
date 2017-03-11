@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :user_events
 
   validates :name, presence: true
+  validates :avatar, presence: true
 
   mount_uploader :avatar, AvatarUploader
 
