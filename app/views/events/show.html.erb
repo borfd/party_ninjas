@@ -6,9 +6,17 @@
     <div class="panel event">
       <h3>
         <%= @event.title %>
+        <% if current_user.can_attend?(@event) %>
+          <span class="float right attend">
+            <%= link_to "Attend", event_attend_path(@event.id), class: "button secondary right" %>
+          </span>
+        <% end %>
       </h3>
       <%= @event.place %>
       <%= @event.date %>
+      <p>
+
+      </p>
       <p>
         <%= raw auto_html_for @event.description %>
 
@@ -34,10 +42,8 @@
   </div>
 
   <div class="medium-3 columns">
-    <div class=" panel">
-      <% if current_user.can_attend?(@event) %>
-          <%= link_to "Attend", event_attend_path(@event.id), class: "button hollow success" %>
-      <% end %>
+    <div class="text-center panel">
+
       <% if current_user == @event.user %>
         <%= link_to "Edit", edit_event_path(@event), class: "button hollow" %>
         <%= link_to 'Destroy', event_path(@event),

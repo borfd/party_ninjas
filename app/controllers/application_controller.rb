@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   def self.add_breadcrumb name, url, options = {}
-    before_filter options do |controller|
+    before_action options do |controller|
       controller.send(:add_breadcrumb, name, url)
     end
   end
