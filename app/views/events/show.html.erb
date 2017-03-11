@@ -49,7 +49,7 @@
         <%= link_to 'Destroy', event_path(@event),
                       method: :delete, data: { confirm: 'Are you sure?' }, class: "alert button hollow" %>
       <% end %>
-      <h6 class="text-center">Attending: <span class="success badge"><%= @event.users.size %></span></h6>
+      <h6 class="text-center">Attending: <span class="secondary badge"><%= @event.users.size %></span></h6>
       <% if @event.users.any? %>
         <hr />
         <ul class="attendees">

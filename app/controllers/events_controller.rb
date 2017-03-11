@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :set_event, only: [:show, :edit, :update, :destroy]
+	before_action :set_all_events
 
 	add_breadcrumb 'Events', 'events_path'
 
@@ -63,5 +64,9 @@ class EventsController < ApplicationController
 
 	def set_event
 		@event = Event.find(params[:id])
+	end
+
+	def set_all_events
+		@all_events = Event.all.order(:date)
 	end
 end

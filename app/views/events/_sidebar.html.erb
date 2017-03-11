@@ -1,9 +1,13 @@
 <div class="sidebar">
   <nav>
     <ul class="side-nav">
-      <% Event.all.each do |event| %>
+      <% @all_events.each do |event| %>
         <li>
-          <%= link_to event.title, event_path(event.id) %>
+          <%= link_to event_path(event.id)  do %>
+            <span class="label secondary"><%= event.date_format %></span>
+            <br />
+            <span class="<%= event.list_class %>"><%= event.title %></span>
+          <% end %>
         </li>
       <% end %>
     </ul>
