@@ -44,17 +44,19 @@
                       method: :delete, data: { confirm: 'Are you sure?' }, class: "alert button hollow" %>
       <% end %>
       <h6 class="text-center">Attending: <span class="success badge"><%= @event.users.size %></span></h6>
-      <hr />
-      <ul class="attendees">
-      <% @event.users.each do |user| %>
-        <li class="text-center">
-          <%= user.name %>
-          <% if current_user == user %>
-            <span class="secondary badge">me</span>
-          <% end %>
-        </li>
+      <% if @event.users.any? %>
+        <hr />
+        <ul class="attendees">
+        <% @event.users.each do |user| %>
+          <li class="text-center">
+            <%= user.name %>
+            <% if current_user == user %>
+              <span class="secondary badge">me</span>
+            <% end %>
+          </li>
+        <% end %>
+        </ul>
       <% end %>
-      </ul>
     <br />
     </div>
   </div>
