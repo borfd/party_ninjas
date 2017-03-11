@@ -5,7 +5,7 @@
     <% @events.each do |event| %>
       <div>
         <h3><%= link_to event.title, event %></h3>
-        <p><%= truncate(event.description, length: 140) %></p>
+        <p><%= raw(auto_html_for(truncate(event.description, length: 200))) %></p>
         <div class="callout">
           <ul class="menu simple">
             <li><%= event.date.strftime("%a, %B %d %Y") %></li>
