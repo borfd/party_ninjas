@@ -1,7 +1,8 @@
 require "rails_helper"
 
 RSpec.feature "events" do
-	let!(:user) { User.create!(name: "boris", email: "something@example.com", password: "something") }
+	let(:photo) { Rack::Test::UploadedFile.new(File.join(Rails.root, "app", "assets", "images", "fusion.png")) }
+	let!(:user) { User.create!(name: "boris", email: "something@example.com", password: "something", avatar: photo) }
 	let!(:event) { Event.create(title: "Something", place: "somewhere", date: Date.today, user:user) }
 	let!(:second_event) { Event.create(title: "kater", place: "kater", date: Date.tomorrow, user:user) }
 	let!(:third_event) { Event.create(title: "in 20 days", place: "keller", date: 20.days.from_now, user:user) }

@@ -1,6 +1,7 @@
 require 'rails_helper'
 RSpec.describe "comments for events" do
-  let!(:user) { User.create!(name: "boris", email: "something@example.com", password: "something") }
+  let(:photo) { Rack::Test::UploadedFile.new(File.join(Rails.root, "app", "assets", "images", "fusion.png")) }
+  let!(:user) { User.create!(name: "boris", email: "something@example.com", password: "something", avatar: photo) }
   let!(:event) { Event.create(title: "Something", place: "somewhere", date: Date.today, user:user) }
 
   before { login }

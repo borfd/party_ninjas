@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User do
-  subject { User.create!(name: "boris", email: "boris@gmail.com", password: 'yeahbro') }
+  let(:photo) { Rack::Test::UploadedFile.new(File.join(Rails.root, "app", "assets", "images", "fusion.png")) }
+  subject { User.create!(name: "boris", email: "boris@gmail.com", password: 'yeahbro', avatar: photo) }
   let(:event) { Event.create!(place: 'Sisy', date: Date.today, user: subject, title: "opening") }
 
   it "has can_attend? method" do
@@ -30,7 +31,7 @@ RSpec.describe User do
 
   it "has can_edit?" do
     expect(subject.can_edit?(event)).to be true
-    event.user = User.create!(name: "not boris", email: "notboris@gmail.com", password: "yeahbro")
+    event.user = User.create!(name: "not boris", email: "notboris@gmail.com", password: "yeahbro", avatar: photo)
     expect(subject.can_edit?(event)).to_not be true
     subject.admin = true
     expect(subject.can_edit?(event)).to be true
