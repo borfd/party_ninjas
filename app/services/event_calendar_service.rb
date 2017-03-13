@@ -31,6 +31,10 @@ class EventCalendarService
     @events.size
   end
 
+  def upcoming
+    @events.where('date >= ?', Date.today)
+  end
+
   def each(&block)
     @events.each(&block)
   end

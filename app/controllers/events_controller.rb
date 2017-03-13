@@ -25,7 +25,7 @@ class EventsController < ApplicationController
 	end
 
 	def index
-		@events = @all_events
+		@events = upcoming_events
 	end
 
 	def edit
@@ -68,5 +68,9 @@ class EventsController < ApplicationController
 
 	def set_all_events
 		@all_events = Event.all.order(:date)
+	end
+
+	def upcoming_events
+		EventCalendarService.new().upcoming
 	end
 end
