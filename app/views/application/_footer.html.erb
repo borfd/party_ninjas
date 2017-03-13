@@ -12,7 +12,7 @@
   <br />
 
   <ul class="menu simple niggaz-list">
-    <% User.all.select {|u| u.avatar.present?}.each do |user| %>
+    <% User.all.select {|u| u.avatar.present?}.to_a.shuffle.each do |user| %>
       <%= image_tag user.avatar.url %>
     <% end %>
   </ul>
