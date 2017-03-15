@@ -1,2 +1,22 @@
-<h1>Party Niggaz</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div class="row">
+  <div class="medium-2 columns">
+    <%= render 'sidebar' %>
+  </div>
+  <div class="medium-8 columns">
+    <div class="zeina-bar">
+      <%= link_to event_path(@featured_event) do %>
+        <h1><%= @featured_event.title %> <span class="label secondary"><%= @featured_event.date %></span> </h1>
+      <% end %>
+      <p><%= raw auto_html_for @featured_event.description %></p>
+
+    </div>
+  </div>
+  <div class="medium-2 columns">
+    <ul class="menu simple niggaz-list">
+      <% User.all.select {|u| u.avatar.present?}.to_a.shuffle.each do |user| %>
+        <div class="jumpy-nigga"><%= image_tag user.avatar.url %></div>
+      <% end %>
+
+    </ul>
+  </div>
+</div>

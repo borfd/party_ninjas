@@ -29,6 +29,7 @@
 .top-bar, .top-bar ul {
     background-color: black;
 }
+
 body {
   background-color: #676767;
   color: whitesmoke;
@@ -56,9 +57,34 @@ body {
 }
 
 .niggaz-list img {
-  height: 100px;
+  height: 50px;
+  animation: niggazbejumping 5s;
+  -webkit-transition: all 1s ease-in-out;
 }
 
 .breadcrumbs {
   margin-top: 15px;
+}
+
+.zeina-bar{
+  padding: 5%;
+  border-radius: 20px;
+  margin-top: 20%;
+}
+
+@keyframes niggazbejumping
+{
+    0% {
+        left: 0;
+    }
+    10% {
+        left: 50%;
+    }
+    100% {
+        left: 10%;
+    }
+}
+
+.jumpy-nigga {
+  position: relative;
 }
