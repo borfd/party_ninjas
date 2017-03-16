@@ -11,14 +11,22 @@
           <li><%= link_to "This Week", filter_events_path(:this_week) %></li>
         </ul>
       </li>
-      <% if user_signed_in? %>
-        <li class="hide-for-medium"><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li class="hide-for-medium"><%= link_to "Login", new_user_session_path %>
-      <% end %>
+      <li>
+        <ul class="dropdown menu" data-dropdown-menu>
+          <ul class="menu vertical">
+            <% if user_signed_in? %>
+                <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+                <li><%= link_to "Profile", edit_user_registration_path, class: ' ' %></li>
+            <% else %>
+              <li><%= link_to "Login", new_user_session_path %></li>
+            <% end %>
+          </ul>
+        </ul>
+      </li>
     </ul>
   </div>
   <div class="top-bar-right show-for-medium">
+
     <ul class="menu">
       <!-- <li><input type="search" placeholder="Search"></li> -->
       <!-- <li><button type="button" class="button">Search</button></li> -->
