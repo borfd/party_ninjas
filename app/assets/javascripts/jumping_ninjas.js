@@ -5,7 +5,7 @@ $(document).ready(function(){
 function makeNewPosition(){
 
     // Get viewport dimensions (remove the dimension of the div)
-    var h = $('.niggaz-list').height() + $(document).height() - 50;
+    var h = $('.niggaz-list').height() + 100;
     var w = $('.niggaz-list').width();
 
     var nh = Math.floor(Math.random() * h);
