@@ -56,10 +56,13 @@ body {
   height: 30px;
 }
 
-.niggaz-list img {
+.niggaz-list {
+  position: relative;
+  img {
   height: 50px;
   animation: niggazbejumping 5s;
   -webkit-transition: all 1s ease-in-out;
+  }
 }
 
 .breadcrumbs {
@@ -87,4 +90,5 @@ body {
 
 .jumpy-nigga {
   position: relative;
+  transition: all 2s ease 0s;
 }
