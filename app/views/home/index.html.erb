@@ -4,10 +4,12 @@
   </div>
   <div class="medium-8 columns">
     <div class="zeina-bar">
-      <%= link_to event_path(@featured_event) do %>
-        <h1><%= @featured_event.title %> <span class="label secondary"><%= @featured_event.date %></span> </h1>
+      <% if @featured_event.present? %>
+        <%= link_to event_path(@featured_event.id) do %>
+          <h1><%= @featured_event.title %> <span class="label secondary"><%= @featured_event.date %></span> </h1>
+        <% end %>
+        <p><%= raw auto_html_for @featured_event.description %></p>
       <% end %>
-      <p><%= raw auto_html_for @featured_event.description %></p>
 
     </div>
   </div>

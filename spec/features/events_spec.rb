@@ -11,7 +11,9 @@ RSpec.feature "events" do
 
 	def login
 		visit root_url
-		# first("Log in").click
+		within ".user-actions" do
+			click_link "Login"
+		end
 		fill_in "Email", with: "something@example.com"
 		fill_in "Password", with: "something"
 		click_button "Log in"

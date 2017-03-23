@@ -5,7 +5,7 @@ require 'carrierwave/storage/abstract'
 require 'carrierwave/storage/file'
 require 'carrierwave/storage/fog'
 
-if Rails.env.test? or Rails.env.cucumber?
+if Rails.env.test? or Rails.env.cucumber? or Rails.env.development?
   CarrierWave.configure do |config|
     config.storage = :file
     config.enable_processing = false

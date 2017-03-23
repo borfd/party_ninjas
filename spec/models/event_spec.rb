@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 RSpec.describe Event do
 	let(:user) { User.create(email: "something", password: "something") }
