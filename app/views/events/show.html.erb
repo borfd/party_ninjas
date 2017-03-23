@@ -1,17 +1,14 @@
 <div class="row">
-  <div class="medium-3 columns show-for-medium">
-    <%= render 'sidebar' %>
-  </div>
   <div class="medium-6 columns">
     <div class="panel event">
-      <h3>
+      <h1>
         <%= @event.title %>
         <% if current_user.can_attend?(@event) %>
           <span class="float right attend">
             <%= link_to "Attend", event_attend_path(@event.id), class: "button secondary right" %>
           </span>
         <% end %>
-      </h3>
+      </h1>
       <%= @event.place %>
       <%= @event.date %>
       <p>
@@ -41,15 +38,18 @@
 
   </div>
 
-  <div class="medium-3 columns">
-    <div class="text-center panel">
-
+  <div class="medium-6 columns">
+    <div class="text-center">
+    <p>
+        <%= raw auto_html_for @event.additional_info %>
+      </p>
       <% if current_user.can_edit?(@event) %>
         <%= link_to "Edit", edit_event_path(@event), class: "button hollow" %>
         <%= link_to 'Destroy', event_path(@event),
                       method: :delete, data: { confirm: 'Are you sure?' }, class: "alert button hollow" %>
       <% end %>
       <h6 class="text-center">Attending: <span class="secondary badge"><%= @event.users.size %></span></h6>
+
       <% if @event.users.any? %>
         <hr />
         <ul class="attendees">
