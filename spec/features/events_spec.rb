@@ -33,7 +33,6 @@ RSpec.feature "events" do
 		fill_in "Description", with: "inadiclub"
 		click_button "Update Event"
 		expect(page).to have_content("inadiclub")
-
 	end
 
 	scenario "I want to see all event attributes" do

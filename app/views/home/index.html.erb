@@ -16,7 +16,11 @@
   <div class="medium-2 columns">
     <ul class="menu simple niggaz-list">
       <% User.all.select {|u| u.avatar.present?}.to_a.shuffle.each do |user| %>
-        <div class="jumpy-nigga"><%= image_tag user.avatar.url %></div>
+        <div id="user-<%= user.id %>"><%= image_tag user.avatar.url %>
+        <% if current_user.admin? %>
+          <%= link_to "destroy", users_path(user.id), method: :delete %>
+        <% end %>
+        </div>
       <% end %>
 
     </ul>

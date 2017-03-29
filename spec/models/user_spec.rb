@@ -36,4 +36,5 @@ RSpec.describe User do
     subject.admin = true
     expect(subject.can_edit?(event)).to be true
   end
+
 end
