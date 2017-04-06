@@ -4,6 +4,8 @@ class Event < ApplicationRecord
   has_many :users, through: :user_events
   has_many :user_events
   has_many :comments, dependent: :destroy
+  has_many :event_labels
+  has_many :labels, through: :event_labels
 
   mount_uploader :header_image, HeaderImageUploader
 

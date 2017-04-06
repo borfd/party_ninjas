@@ -2,6 +2,7 @@ require "rails_helper"
 
 RSpec.describe Event do
 	let(:user) { User.create(email: "something", password: "something") }
+  let(:label) { Label.create(name: "sailing")}
 
   subject {
     described_class.new(
@@ -29,5 +30,11 @@ RSpec.describe Event do
   it "has header image" do
     subject.header_image = File.open(File.absolute_path(File.join(Rails.root, "app", "assets", "images", "fusion.png")))
     expect { subject.save }.to_not raise_error
+  end
+
+  it "has labels" do
+    expect(subject.labels).to_not include label
+    subject.labels << label
+    expect(subject.labels).to include label
   end
 end
