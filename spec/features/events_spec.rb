@@ -1,11 +1,13 @@
 require "rails_helper"
 
 RSpec.feature "events" do
-	let(:photo) { Rack::Test::UploadedFile.new(File.join(Rails.root, "app", "assets", "images", "fusion.png")) }
+	let(:photo) { File.absolute_path(File.join(Rails.root, "app", "assets", "images", "fusion.png")) }
 	let!(:user) { User.create!(name: "boris", email: "something@example.com", password: "something", avatar: photo) }
 	let!(:event) { Event.create(title: "Something", place: "somewhere", date: Date.today, user:user) }
 	let!(:second_event) { Event.create(title: "kater", place: "kater", date: Date.tomorrow, user:user) }
 	let!(:third_event) { Event.create(title: "in 20 days", place: "keller", date: 20.days.from_now, user:user) }
+  let(:photo) { Rack::Test::UploadedFile.new(File.join(Rails.root, "app", "assets", "images", "fusion.png")) }
+
 
 	before { login }
 
@@ -26,6 +28,7 @@ RSpec.feature "events" do
 		fill_in "Date", with: "2017/06/06"
 		fill_in "Place", with: "Kater Blau"
 		fill_in "Description", with: "Sick party"
+		attach_file "Header Image", photo
 		click_button "Create Event"
 		expect(page).to have_content("Your event has been added")
 		expect(page).to have_content("Kater Blau")

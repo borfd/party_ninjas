@@ -25,4 +25,9 @@ RSpec.describe Event do
     subject.date = Date.tomorrow
     expect(subject).to_not be_expired
   end
+
+  it "has header image" do
+    subject.header_image = File.open(File.absolute_path(File.join(Rails.root, "app", "assets", "images", "fusion.png")))
+    expect { subject.save }.to_not raise_error
+  end
 end

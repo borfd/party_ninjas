@@ -34,6 +34,10 @@
           <%= f.label :description do %>Description:
             <%= f.text_area :description %>
           <% end %>
+
+          <%= f.label :header_image do %>
+            <%= f.file_field :header_image %>
+          <% end %>
         <%= f.submit class: "hollow button success" %>
       <% end %>
     </div>

@@ -5,6 +5,8 @@ class Event < ApplicationRecord
   has_many :user_events
   has_many :comments, dependent: :destroy
 
+  mount_uploader :header_image, HeaderImageUploader
+
   def expired?
     date < Date.today
   end
