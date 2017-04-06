@@ -12,6 +12,7 @@ class EventsController < ApplicationController
 	def create
 		@event = Event.new(event_params.merge(user: current_user))
 		if @event.valid?
+			current_user.attend(@event)
 			@event.save!
 			redirect_to event_path(@event), flash: {notice:"Your event has been added"}
 		else
