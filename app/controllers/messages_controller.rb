@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    NewCommentJob.perform_later "Lobby", current_user, body: params[:body]
+    Message.create!(sent_by: current_user, room: "Lobby", body: params[:body])
+    head :created
   end
 end

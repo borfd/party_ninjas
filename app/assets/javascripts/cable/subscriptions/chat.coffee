@@ -1,7 +1,6 @@
 App.chatChannel = App.cable.subscriptions.create { channel: "ChatChannel", room: "Lobby" },
   connected: ->
-    console.log "connected"
-    App.chatChannel.send({ sent_by: "Paul", body: "This is a cool chat app.", room: "Lobby" })
+    i = 0
 
   received: (data) ->
     @appendLine(data)

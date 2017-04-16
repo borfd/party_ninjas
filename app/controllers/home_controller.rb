@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   def index
     @all_events = Event.order(:date)
     @featured_event = Event.where("date >= ?", Date.today).order(:date).first
+    @messages = Message.order(:created_at)
   end
 
 end
