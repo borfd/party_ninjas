@@ -11,6 +11,7 @@
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
+    <script type="text/javascript">window.action_cable_url = '<%= Rails.configuration.action_cable.url %>'</script>
   </head>
 
   <body>

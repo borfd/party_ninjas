@@ -65,6 +65,7 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
+    cf-app-utils (0.6)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.2.x)
@@ -256,6 +257,8 @@ GEM
     pg (0.18.4)
     public_suffix (2.0.5)
     puma (3.6.2)
+    queue_classic (3.1.0)
+      pg (>= 0.17, < 0.19)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -292,6 +295,7 @@ GEM
       nokogiri (~> 1.5)
       trollop (~> 2.1)
     redcarpet (3.4.0)
+    redis (3.3.3)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     rinku (1.7.3)
@@ -363,10 +367,13 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   auto_html
+  bcrypt (~> 3.1.7)
   byebug
   capybara
   carrierwave (~> 1.0)
+  cf-app-utils
   coffee-rails (~> 4.2)
   database_cleaner
   devise
@@ -379,7 +386,9 @@ DEPENDENCIES
   mini_magick
   pg
   puma (~> 3.0)
+  queue_classic
   rails (~> 5.0.1)
+  redis (~> 3.0)
   rspec-rails
   sass-rails (~> 5.0)
   spring
