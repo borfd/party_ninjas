@@ -1,5 +1,4 @@
 class NewCommentJob < ApplicationJob
-
   def perform(room, user, body)
     ActionCable.server.broadcast(
       "chat_#{room}",

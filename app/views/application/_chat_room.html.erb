@@ -1,9 +1,9 @@
-<%= form_for @message, url: '#' do |f| %>
+<%= form_tag "/messages", method: :post, remote: true do %>
   <div class="form-group">
-    <%= f.label :body %>
-    <%= f.text_area :body, class: 'form-control' %>
+    <%= label_tag :body %>
+    <%= text_area_tag :body %>
     <small class="text-muted">From 2 to 1000 characters</small>
   </div>
 
-  <%= f.submit "Post", class: 'btn btn-primary btn-lg' %>
+  <%= submit_tag "Post", class: 'btn btn-primary btn-lg', remote: true %>
 <% end %>
