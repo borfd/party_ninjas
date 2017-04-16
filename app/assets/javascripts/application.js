@@ -14,13 +14,12 @@
 //= require jquery_ujs
 //= require foundation
 //= require foundation-datepicker
-
+//= require cable
 //= require_tree .
 
 $(function(){
     $(document).foundation();
     $(".fdatepicker").fdatepicker({
       format: "yyyy-mm-dd"
-
     });
 });
