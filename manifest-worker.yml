@@ -1,0 +1,13 @@
+---
+applications:
+- name: partyninjas-worker
+  command: bundle exec rake qc:work
+  no-route: true
+  memory: 256M
+  health-check-type: process
+  instances: 1
+  path: .
+  services:
+    - rails-postgres
+    - redis-small
+

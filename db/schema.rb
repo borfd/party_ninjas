@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170406205505) do
+ActiveRecord::Schema.define(version: 20170416132258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,26 @@ ActiveRecord::Schema.define(version: 20170406205505) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "sent_by_id"
+    t.string   "room"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "queue_classic_jobs", id: :bigserial, force: :cascade do |t|
+    t.text     "q_name",                                null: false
+    t.text     "method",                                null: false
+    t.json     "args",                                  null: false
+    t.datetime "locked_at"
+    t.integer  "locked_by"
+    t.datetime "created_at",   default: -> { "now()" }
+    t.datetime "scheduled_at", default: -> { "now()" }
+    t.index ["q_name", "id"], name: "idx_qc_on_name_only_unlocked", where: "(locked_at IS NULL)", using: :btree
+    t.index ["scheduled_at", "id"], name: "idx_qc_on_scheduled_at_only_unlocked", where: "(locked_at IS NULL)", using: :btree
   end
 
   create_table "user_events", force: :cascade do |t|

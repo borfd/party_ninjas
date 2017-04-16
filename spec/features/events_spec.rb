@@ -28,7 +28,7 @@ RSpec.feature "events" do
 		fill_in "Place", with: "Kater Blau"
 		fill_in "Description", with: "Sick party"
 
-		attach_file "Header Image", photo
+		# attach_file "Header Image", photo
 		click_button "Create Event"
 		expect(page).to have_content("Your event has been added")
 		expect(page).to have_content("Kater Blau")

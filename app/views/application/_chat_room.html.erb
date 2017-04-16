@@ -1,0 +1,9 @@
+<%= form_tag "/messages", method: :post, remote: true do %>
+  <div class="form-group">
+    <%= label_tag :body %>
+    <%= text_area_tag :body %>
+    <small class="text-muted">From 2 to 1000 characters</small>
+  </div>
+
+  <%= submit_tag "Post", class: 'btn btn-primary btn-lg', remote: true %>
+<% end %>
