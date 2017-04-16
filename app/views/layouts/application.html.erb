@@ -6,12 +6,12 @@
     <link href="http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css" rel="stylesheet">
 
     <title><%= content_for?(:title) ? yield(:title) : "Party Niggaz" %></title>
-
+    <script type="text/javascript">window.action_cable_url = '<%= Rails.configuration.action_cable.url %>'</script>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
-    <script type="text/javascript">window.action_cable_url = '<%= Rails.configuration.action_cable.url %>'</script>
+
   </head>
 
   <body>
