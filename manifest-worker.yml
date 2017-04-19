@@ -1,7 +1,7 @@
 ---
 applications:
 - name: partyninjas-worker
-  command: rake environment resque:workers
+  command: COUNT=2 rake environment resque:workers
   no-route: true
   memory: 256M
   health-check-type: process

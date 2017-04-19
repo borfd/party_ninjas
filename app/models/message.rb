@@ -3,6 +3,11 @@ class Message < ApplicationRecord
   belongs_to :sent_by, class_name: User
 
   def broadcast
-    NewCommentJob.perform_later "Lobby", sent_by, body
+    ActionCable.server.broadcast(
+      "chat_#{room}",
+      sent_by: sent_by.name,
+      body: body,
+      room: "Lobby"
+    )
   end
 end
