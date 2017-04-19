@@ -4,6 +4,8 @@
 require_relative 'config/application'
 
 Rails.application.load_tasks
+require 'resque/tasks'
+
 namespace :cf do
   desc "Only run on the first application instance"
   task :on_first_instance do

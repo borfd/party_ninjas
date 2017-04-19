@@ -1,3 +1,11 @@
+ <div data-chat-room="Lobby">
+    <% @messages.each do |msg| %>
+      <article>
+        <span class="speaker"><%= msg.sent_by.name %></span>
+        <span class="body"><%= msg.body %></span>
+      </article>
+    <% end %>
+</div>
 <%= form_tag "/messages", method: :post, remote: true do %>
   <div class="form-group">
     <%= label_tag :body %>

@@ -38,8 +38,7 @@ gem 'auto_html'
 gem 'fog'
 gem "mini_magick"
 gem 'carrierwave', '~> 1.0'
-gem "queue_classic"
-
+gem 'resque'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

@@ -38,8 +38,9 @@ ActiveRecord::Schema.define(version: 20170416132258) do
     t.string   "place"
     t.text     "description"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.text     "additional_info"
     t.string   "header_image"
     t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
