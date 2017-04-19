@@ -32,7 +32,7 @@ class EventCalendarService
   end
 
   def upcoming
-    @events.where('date >= ?', Date.today)
+    @events.where('date >= ?', Date.today).order(:date)
   end
 
   def each(&block)
