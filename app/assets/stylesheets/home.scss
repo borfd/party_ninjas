@@ -98,3 +98,14 @@ body {
   overflow: hidden
 }
 
+.chatbox {
+  height: 300px;
+  overflow:auto;
+}
+
+.chatbox .messages {
+  overflow:auto;
+  bottom:0;
+  max-height: 100%;
+}
+

@@ -1,12 +1,13 @@
 App.chatChannel = App.cable.subscriptions.create { channel: "ChatChannel", room: "Lobby" },
   connected: ->
-    i = 0
+    @scrollToBottom()
 
   received: (data) ->
     @appendLine(data)
 
   appendLine: (data) ->
-    console.log(data)
+    @scrollToBottom()
+    $("textarea[name='body']").val("")
     html = @createLine(data)
     $("[data-chat-room='Lobby']").append(html)
 
@@ -21,4 +22,7 @@ App.chatChannel = App.cable.subscriptions.create { channel: "ChatChannel", room:
   send_message: (body, room) ->
     App.chatChannel.send({ sent_by: "Paul", body: body, room: room })
     @perform 'send_message', body: body, room: room
+
+  scrollToBottom: ->
+    $("[data-chat-room='Lobby']").animate({ scrollTop: $("[data-chat-room='Lobby']").prop("scrollHeight")}, 1000);
 
