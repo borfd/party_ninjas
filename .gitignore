@@ -23,3 +23,7 @@
 .DS_Store
 app/.DS_Store
 dump.rdb
+
+# IntelliJ
+/.idea
+*.iml
