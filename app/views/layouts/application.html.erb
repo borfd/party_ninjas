@@ -20,11 +20,11 @@
     <%= render 'top_bar' %>
 
     <div class="medium-12 columns">
-      <ul class="breadcrumbs">
-        <% @breadcrumbs.each do |name, url| %>
-          <li><%= link_to name, url %></li>
-        <% end %>
-      </ul>
+      <!--<ul class="breadcrumbs">-->
+        <!--<% @breadcrumbs.each do |name, url| %>-->
+          <!--<li><%= link_to name, url %></li>-->
+        <!--<% end %>-->
+      <!--</ul>-->
       <% if flash[:notice].present? %>
 
         <div class="callout success">
