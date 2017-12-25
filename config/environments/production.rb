@@ -11,7 +11,7 @@ Rails.application.configure do
   config.eager_load = true
 
   # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
+  config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
   # Disable serving static files from the `/public` folder by default since
@@ -47,7 +47,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -60,17 +60,17 @@ Rails.application.configure do
   sendgrid_opts = JSON.parse(ENV["VCAP_SERVICES"])["sendgrid"][0]["credentials"]
 
   ActionMailer::Base.smtp_settings = {
-      :user_name => sendgrid_opts["username"],
-      :password => sendgrid_opts["password"],
-      :domain => 'partyninjas.cfapps.io',
-      :address => 'smtp.sendgrid.net',
-      :port => 587,
-      :authentication => :plain,
-      :enable_starttls_auto => true
+      user_name: sendgrid_opts["username"],
+      password: sendgrid_opts["password"],
+      domain: 'partyninjas.cfapps.io',
+      address: 'smtp.sendgrid.net',
+      port: 587,
+      authentication: :plain,
+      enable_starttls_auto: true
   }
 
   application_uris = JSON.parse(ENV['VCAP_APPLICATION'])['application_uris']
-  config.action_mailer.default_url_options = { :host => application_uris.first }
+  config.action_mailer.default_url_options = {host: application_uris.first}
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -91,7 +91,7 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end
@@ -100,11 +100,11 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
 
-# Be sure this host is able to route your requests on port 4443. This can be an
-# issue if you have a proxy in front of your application that will not proxy port
-# 4443 (eg. CloudFlare).
+  # Be sure this host is able to route your requests on port 4443. This can be an
+  # issue if you have a proxy in front of your application that will not proxy port
+  # 4443 (eg. CloudFlare).
   first_host = application_uris[0]
   config.action_cable.url = "wss://#{first_host}:4443/cable"
 
-  config.action_cable.allowed_request_origins = application_uris.flat_map { |host| ["http://#{host}", "https://#{host}"] }
+  config.action_cable.allowed_request_origins = application_uris.flat_map {|host| ["http://#{host}", "https://#{host}"]}
 end
