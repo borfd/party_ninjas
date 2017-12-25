@@ -69,6 +69,9 @@ Rails.application.configure do
       :enable_starttls_auto => true
   }
 
+  application_uris = JSON.parse(ENV['VCAP_APPLICATION'])['application_uris']
+  config.action_mailer.default_url_options = { :host => application_uris.first }
+
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -96,7 +99,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  application_uris = JSON.parse(ENV['VCAP_APPLICATION'])['application_uris']
 
 # Be sure this host is able to route your requests on port 4443. This can be an
 # issue if you have a proxy in front of your application that will not proxy port
