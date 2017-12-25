@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A webapp for all the party ninjas. Uses Ruby on Rails, Sidekiq, Postgres and Redis.
 
-Things you may want to cover:
+Run using normal rails s (will use Puma).
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Run a worker process with `COUNT=1 rake resque:workers`
